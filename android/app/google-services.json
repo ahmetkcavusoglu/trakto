@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1029043609628",
+    "project_id": "subscription-auditor-75577",
+    "storage_bucket": "subscription-auditor-75577.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1029043609628:android:4b4c4ba808a3956becbfd9",
+        "android_client_info": {
+          "package_name": "com.example.subscription_auditor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1029043609628-fmibnbgaocqn49uomuj4fk4v0m8hkhen.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDAMZENiAeNIRhAYD1f87WCow5QYTYGL34"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1029043609628-fmibnbgaocqn49uomuj4fk4v0m8hkhen.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
