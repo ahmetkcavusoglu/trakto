@@ -39,7 +39,7 @@ class SubscriptionAuditorApp extends ConsumerWidget {
     final themeMode = ref.watch(themeProvider);
 
     return MaterialApp(
-      title: 'Subscription Auditor',
+      title: 'Trakto',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.light,
       darkTheme: AppTheme.dark,

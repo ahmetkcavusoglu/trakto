@@ -1,5 +1,5 @@
-name: subscription_auditor
-description: Track your subscriptions and audit their value.
+name: trakto
+description: Trakto - Track your subscriptions and audit their value.
 publish_to: 'none'
 version: 1.0.0+1
 
@@ -60,9 +60,18 @@ dev_dependencies:
   flutter_lints: ^4.0.0
   build_runner: ^2.4.12
   json_serializable: ^6.8.0
+  flutter_launcher_icons: ^0.14.3
 
 flutter:
   uses-material-design: true
   assets:
     - assets/images/
     - assets/icons/  
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/icons/app_icon.png"
+  min_sdk_android: 21
+  adaptive_icon_background: "#6C63FF"
+  remove_alpha_ios: true

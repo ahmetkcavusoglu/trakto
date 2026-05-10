@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1029043609628:android:4b4c4ba808a3956becbfd9",
+        "mobilesdk_app_id": "1:1029043609628:android:db4cc163b853f528ecbfd9",
         "android_client_info": {
-          "package_name": "com.example.subscription_auditor"
+          "package_name": "com.ahmetkcavusoglu.trakto"
         }
       },
       "oauth_client": [
@@ -29,6 +29,13 @@
             {
               "client_id": "1029043609628-fmibnbgaocqn49uomuj4fk4v0m8hkhen.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "1029043609628-vd2bc7idu3v1j11tnl6ktl9lbsto9rf1.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.subscriptionAuditor"
+              }
             }
           ]
         }
