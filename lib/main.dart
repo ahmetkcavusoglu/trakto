@@ -11,17 +11,31 @@ import 'data/services/notification_service.dart';
 import 'data/services/pin_service.dart';
 import 'presentation/screens/pin/pin_screen.dart';
 import 'data/services/revenue_cat_service.dart';
+//import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  try {
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
+  } catch (e) {
+    debugPrint('Firebase init error: $e');
+  }
 
-  await NotificationService().init();
-  await NotificationService().requestPermission();
-  await RevenueCatService().init();
+  try {
+    await NotificationService().init();
+    await NotificationService().requestPermission();
+  } catch (e) {
+    debugPrint('Notification init error: $e');
+  }
+
+  try {
+    await RevenueCatService().init();
+  } catch (e) {
+    debugPrint('RevenueCat init error: $e');
+  }
 
   runApp(
     const ProviderScope(

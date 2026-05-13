@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../providers/auth_provider.dart';
 
@@ -34,8 +35,12 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('Giriş başarısız: $e'),
+            content: Text('Sign in failed: $e'),
             backgroundColor: Colors.red.shade800,
+            behavior: SnackBarBehavior.floating,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
           ),
         );
       }
@@ -55,8 +60,12 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('Kayıt başarısız: $e'),
+            content: Text('Registration failed: $e'),
             backgroundColor: Colors.red.shade800,
+            behavior: SnackBarBehavior.floating,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
           ),
         );
       }
@@ -69,85 +78,107 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
+    // iOS sistem renkleri — light/dark ayrı
+    final primaryBlue = isDark
+        ? const Color(0xFF0A84FF)
+        : const Color(0xFF007AFF);
+    final textPrimary = isDark ? Colors.white : Colors.black;
+    final textSecondary = isDark
+        ? const Color(0xFF8E8E93)
+        : const Color(0xFF6E6E73);
+
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: const EdgeInsets.all(28),
+          padding: const EdgeInsets.symmetric(horizontal: 28),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
+              const SizedBox(height: 56),
+
+              // Logo — gerçek uygulama ikonu
+              Center(
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(20), // iOS squircle
+                  child: Image.asset(
+                    'assets/icons/app_icon.png',
+                    width: 80,
+                    height: 80,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 24),
+
+              // Uygulama adı
+              Center(
+                child: Text(
+                  'Trakto',
+                  style: GoogleFonts.poppins(
+                    fontSize: 28,
+                    fontWeight: FontWeight.w700,
+                    color: textPrimary,
+                    letterSpacing: -0.5,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 6),
+
+              // Tagline
+              Center(
+                child: Text(
+                  'Track subscriptions, cut waste.',
+                  style: GoogleFonts.poppins(
+                    fontSize: 14,
+                    color: textSecondary,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+              ),
+
               const SizedBox(height: 48),
 
-              // Logo
-              Container(
-                width: 72,
-                height: 72,
-                decoration: BoxDecoration(
-                  color: AppColors.primary,
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: const Icon(
-                  Icons.receipt_long_rounded,
-                  color: Colors.white,
-                  size: 36,
-                ),
-              ),
-              const SizedBox(height: 28),
-
-              // Başlık
-              Text(
-                'Subscription\nAuditor',
-                style: TextStyle(
-                  color: isDark
-                      ? AppColors.darkTextPrimary
-                      : AppColors.lightTextPrimary,
-                  fontSize: 32,
-                  fontWeight: FontWeight.w700,
-                  height: 1.1,
-                ),
-              ),
-              const SizedBox(height: 8),
-              Text(
-                'Aboneliklerini takip et,\ngereksiz harcamaları bul.',
-                style: TextStyle(
-                  color: isDark
-                      ? AppColors.darkTextSecondary
-                      : AppColors.lightTextSecondary,
-                  fontSize: 15,
-                  height: 1.5,
-                ),
-              ),
-
-              const SizedBox(height: 48),
-
-              // Email
+              // Email alanı
               TextField(
                 controller: _emailController,
                 keyboardType: TextInputType.emailAddress,
-                style: TextStyle(
-                  color: isDark
-                      ? AppColors.darkTextPrimary
-                      : AppColors.lightTextPrimary,
+                style: GoogleFonts.poppins(
+                  color: textPrimary,
+                  fontSize: 15,
                 ),
-                decoration: const InputDecoration(
-                  labelText: 'Email',
-                  prefixIcon: Icon(Icons.mail_outline, size: 20),
+                decoration: InputDecoration(
+                  hintText: 'Email',
+                  hintStyle: GoogleFonts.poppins(
+                    color: textSecondary,
+                    fontSize: 15,
+                  ),
+                  prefixIcon: Icon(
+                    Icons.mail_outline_rounded,
+                    size: 20,
+                    color: textSecondary,
+                  ),
                 ),
               ),
-              const SizedBox(height: 14),
+              const SizedBox(height: 12),
 
-              // Şifre
+              // Şifre alanı
               TextField(
                 controller: _passwordController,
                 obscureText: _obscurePassword,
-                style: TextStyle(
-                  color: isDark
-                      ? AppColors.darkTextPrimary
-                      : AppColors.lightTextPrimary,
+                style: GoogleFonts.poppins(
+                  color: textPrimary,
+                  fontSize: 15,
                 ),
                 decoration: InputDecoration(
-                  labelText: 'Şifre',
-                  prefixIcon: const Icon(Icons.lock_outline, size: 20),
+                  hintText: 'Password',
+                  hintStyle: GoogleFonts.poppins(
+                    color: textSecondary,
+                    fontSize: 15,
+                  ),
+                  prefixIcon: Icon(
+                    Icons.lock_outline_rounded,
+                    size: 20,
+                    color: textSecondary,
+                  ),
                   suffixIcon: GestureDetector(
                     onTap: () =>
                         setState(() => _obscurePassword = !_obscurePassword),
@@ -156,14 +187,15 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                           ? Icons.visibility_outlined
                           : Icons.visibility_off_outlined,
                       size: 20,
+                      color: textSecondary,
                     ),
                   ),
                 ),
               ),
 
-              const SizedBox(height: 28),
+              const SizedBox(height: 32),
 
-              // Giriş yap butonu
+              // Sign In butonu
               ElevatedButton(
                 onPressed: _isLoading ? null : _signIn,
                 child: _isLoading
@@ -175,15 +207,17 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                           strokeWidth: 2,
                         ),
                       )
-                    : const Text('Giriş Yap'),
+                    : const Text('Sign In'),
               ),
               const SizedBox(height: 12),
 
-              // Kayıt ol butonu
+              // Create Account butonu
               OutlinedButton(
                 onPressed: _isLoading ? null : _register,
-                child: const Text('Kayıt Ol'),
+                child: const Text('Create Account'),
               ),
+
+              const SizedBox(height: 32),
             ],
           ),
         ),

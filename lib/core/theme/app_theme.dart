@@ -1,3 +1,4 @@
+import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 import 'app_colors.dart';
 
@@ -73,10 +74,10 @@ class AppTheme {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
           ),
-          textStyle: const TextStyle(
-            fontSize: 15,
-            fontWeight: FontWeight.w600,
-          ),
+        textStyle: GoogleFonts.poppins(
+          fontSize: 15,
+          fontWeight: FontWeight.w600,
+        ),
         ),
       ),
       outlinedButtonTheme: OutlinedButtonThemeData(
@@ -87,12 +88,19 @@ class AppTheme {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
           ),
+          textStyle: GoogleFonts.poppins(   // ← bunu ekle
+            fontSize: 15,
+            fontWeight: FontWeight.w500,
+          ),
         ),
       ),
-      textTheme: const TextTheme(
-        bodyLarge: TextStyle(color: AppColors.darkTextPrimary),
-        bodyMedium: TextStyle(color: AppColors.darkTextSecondary),
-        bodySmall: TextStyle(color: AppColors.darkTextTertiary),
+      textTheme: GoogleFonts.poppinsTextTheme().copyWith(
+        bodyLarge: GoogleFonts.poppins(color: AppColors.darkTextPrimary),
+        bodyMedium: GoogleFonts.poppins(color: AppColors.darkTextSecondary),
+        bodySmall: GoogleFonts.poppins(color: AppColors.darkTextTertiary),
+        titleLarge: GoogleFonts.poppins(color: AppColors.darkTextPrimary, fontWeight: FontWeight.w600),
+        titleMedium: GoogleFonts.poppins(color: AppColors.darkTextPrimary, fontWeight: FontWeight.w500),
+        labelLarge: GoogleFonts.poppins(color: Colors.white, fontWeight: FontWeight.w600, fontSize: 15),
       ),
     );
   }
@@ -184,10 +192,13 @@ class AppTheme {
           ),
         ),
       ),
-      textTheme: const TextTheme(
-        bodyLarge: TextStyle(color: AppColors.lightTextPrimary),
-        bodyMedium: TextStyle(color: AppColors.lightTextSecondary),
-        bodySmall: TextStyle(color: AppColors.lightTextTertiary),
+      textTheme: GoogleFonts.poppinsTextTheme().copyWith(
+        bodyLarge: GoogleFonts.poppins(color: AppColors.lightTextPrimary),
+        bodyMedium: GoogleFonts.poppins(color: AppColors.lightTextSecondary),
+        bodySmall: GoogleFonts.poppins(color: AppColors.lightTextTertiary),
+        titleLarge: GoogleFonts.poppins(color: AppColors.lightTextPrimary, fontWeight: FontWeight.w600),
+        titleMedium: GoogleFonts.poppins(color: AppColors.lightTextPrimary, fontWeight: FontWeight.w500),
+        labelLarge: GoogleFonts.poppins(color: Colors.white, fontWeight: FontWeight.w600, fontSize: 15),
       ),
     );
   }
